@@ -11,7 +11,27 @@ import { FormattedMessage } from 'react-intl';
 class Login extends Component {
     constructor(props) {
         super(props);
-        
+        this.state = {
+          username: '',
+          password: '',
+        }
+    }
+
+    handdleOnChangeUsername = (event) => {
+      this.setState({
+        username: event.target.value
+      })
+    }
+
+    handleOnchangePassword = (event) => {
+      this.setState({
+        password: event.target.value
+      })
+    }
+
+    handleLogin = () => {
+      console.log("username: ", this.state.username, " password: ", this.state.password)
+      console.log(this.state)
     }
 
     render() {
@@ -28,25 +48,37 @@ class Login extends Component {
                 <div className="card-body p-5">
                   <h4 className="text-uppercase text-center mb-5">Đăng nhập</h4>
 
-                  <form action="" method="" id="registerForm">
+                  {/* <form action="" method="" id="registerForm"> */}
 
                     <div data-mdb-input-init className="form-outline mb-4">
-                      <input type="email" id="email" name="email" className="form-control form-control-lg" required/>
+                      <input 
+                        type="email" id="email" name="email" className="form-control form-control-lg" required
+                        value={this.state.username}
+                        onChange={(event) => this.handdleOnChangeUsername(event)}
+                      />
                       <label className="form-label" htmlFor="email">Email<span className="required"> *</span></label>
                     </div>
 
                     <div data-mdb-input-init className="form-outline mb-4">
-                      <input type="password" id="password" name="password" className="form-control form-control-lg" required/>
+                      <input 
+                        type="password" id="password" name="password" className="form-control form-control-lg" required
+                        value = {this.state.password}
+                        onChange={(event) => this.handleOnchangePassword(event)}
+                      />
                       <label className="form-label" htmlFor="password">Mật khẩu<span className="required"> *</span></label>
                     </div>
 
                     <div className="d-flex justify-content-center" >
-                      <button style={{width: '60%'}} type="submit" data-mdb-button-init data-mdb-ripple-init className="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Đăng nhập</button>
+                      <button 
+                        style={{width: '60%'}} data-mdb-button-init data-mdb-ripple-init className="btn btn-success btn-block btn-lg gradient-custom-4 text-body
+                        " onClick={() => {this.handleLogin()}}>
+                          Đăng nhập
+                      </button>
                     </div>
 
-                    <p className="text-center text-muted mt-5 mb-0">Chưa có tài khoảng? <a href="http://localhost:8080/crud" className="fw-bold text-body"><u>Đăng ký</u></a></p>
+                    <p className="text-center text-muted mt-5 mb-0">Chưa có tài khoản? <a href="http://localhost:8080/crud" className="fw-bold text-body"><u>Đăng ký</u></a></p>
 
-                  </form>
+                  {/* </form> */}
 
                 </div>
               </div>
