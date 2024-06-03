@@ -1,7 +1,7 @@
 .required {
     color: red;
-  }
-  .gradient-custom-3 {
+}
+.gradient-custom-3 {
 
   background: #84fab0;
 
@@ -9,8 +9,8 @@
   background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
 
   background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
-  }
-  .gradient-custom-4 {
+}
+.gradient-custom-4 {
 
   background: #84fab0;
 
@@ -18,4 +18,8 @@
   background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
 
   background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
-  }
+}
+
+#loginBtn:hover {
+  opacity: 80%;
+}
