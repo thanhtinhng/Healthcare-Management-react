@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './HomeHeader.scss';
+import '../../assets/themify-icons/themify-icons.css'
 
 
 class HomeHeader extends Component {
 
     render() {
         return (
+            <React.Fragment>            
             <div className='home-header-container'>
                 <div className='home-header-content'>
                     <div className='left-content'>
@@ -44,6 +46,46 @@ class HomeHeader extends Component {
                     </div>
                 </div>
             </div>
+
+            <div className='home-header-banner'>
+                <div className='content-up'>
+                    <div className='tittle1'>NỀN TẢNG Y TẾ</div>
+                    <div className='tittle2'>CHĂM SÓC SỨC KHỎE TOÀN DIỆN</div>
+                    <div className='search'>
+                        <i className="search-icon ti-search"></i>
+                        <input type='text' placeholder='Tìm bác sĩ theo chuyên khoa'></input>
+                    </div>
+                </div>
+                <div className='content-down'>
+                    <div className='option'>
+                        <div className='option-child'>
+                            <div className='icon-child'><i className='far fa-hospital'></i></div>
+                            <div className='text-child'>Khám chuyên khoa</div>
+                        </div>
+
+                        <div className='option-child'>
+                            <div className='icon-child'><i className='ti-mobile'></i></div>
+                            <div className='text-child'>Khám từ xa</div>
+                        </div>
+
+                        <div className='option-child'>
+                            <div className='icon-child'><i className='ti-agenda'></i></div>
+                            <div className='text-child'>Khám tổng quát</div>
+                        </div>
+
+                        <div className='option-child'>
+                            <div className='icon-child'><i className='fas fa-vial'></i></div>
+                            <div className='text-child'>Xét nghiệm y học</div>
+                        </div>
+
+                        <div className='option-child'>
+                            <div className='icon-child'><i className='ti-face-smile'></i></div>
+                            <div className='text-child'>Sức khỏe tinh thần</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </React.Fragment>
         );
     }
 
