@@ -12,17 +12,18 @@ class Header extends Component {
         const { processLogout } = this.props;
 
         return (
-            <div className="header-container">
-                {/* thanh navigator */}
-                <div className="header-tabs-container">
-                    <Navigator menus={adminMenu} />
-                </div>
+            // <div className="header-container">
+            //     {/* thanh navigator */}
+            //     <div className="header-tabs-container">
+            //         <Navigator menus={adminMenu} />
+            //     </div>
 
-                {/* nút logout */}
+            //     {/* nút logout */}
                 <div className="btn btn-logout" onClick={processLogout}>
                     <i className="fas fa-sign-out-alt"></i>
                 </div>
-            </div>
+            // </div>
+            // <div></div>
         );
     }
 

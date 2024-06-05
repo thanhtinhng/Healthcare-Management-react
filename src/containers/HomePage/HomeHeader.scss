@@ -37,7 +37,12 @@ i.fa.fa-bars {
                 .sub-title {
                     font-size: 12px;
                 }
+
+                &:hover {
+                    color: hsl(206, 68%, 53%);
+                }
             }
+            
         }
 
         .right-content {
@@ -48,6 +53,9 @@ i.fa.fa-bars {
             
             .support {
                 cursor: pointer;
+                &:hover {
+                    color: hsl(206, 68%, 53%);
+                }
             }
         }
     }
@@ -141,8 +149,10 @@ i.fa.fa-bars {
                 .text-child {
                     font-size: 17px;
                     font-weight: bold;
+                }
 
-                    &:hover {
+                &:hover {
+                    .text-child {
                         color: hsl(206, 68%, 53%);
                     }
                 }

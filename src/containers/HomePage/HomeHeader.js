@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './HomeHeader.scss';
 import '../../assets/themify-icons/themify-icons.css'
-
+import { withRouter } from 'react-router-dom';
 
 class HomeHeader extends Component {
+
+    handleClick = () => {
+        this.props.history.push('/department');
+    }
 
     render() {
         return (
@@ -17,7 +21,7 @@ class HomeHeader extends Component {
                     </div>
 
                     <div className='center-content'>
-                        <div className='child-content'>
+                        <div className='child-content' onClick={() => {this.handleClick()}}>
                             <div><b>Chuyên khoa</b></div>
                             <div className='sub-title'>Tìm bác sĩ theo chuyên khoa</div>
                         </div>
@@ -58,7 +62,7 @@ class HomeHeader extends Component {
                 </div>
                 <div className='content-down'>
                     <div className='option'>
-                        <div className='option-child'>
+                        <div className='option-child' onClick={() => {this.handleClick()}}>
                             <div className='icon-child'><i className='far fa-hospital'></i></div>
                             <div className='text-child'>Khám chuyên khoa</div>
                         </div>
@@ -102,4 +106,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeHeader);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomeHeader));
