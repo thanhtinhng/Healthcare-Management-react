@@ -1,7 +1,25 @@
+html, body {
+    overflow: auto;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 i.fa.fa-bars {
     font-size: 30px;
     color: grey;
     cursor: pointer;
+}
+
+.btn.btn-logout {
+    z-index: 1;
+    position: absolute;
+    right: 0px;
+    .fa-sign-out-alt {
+        font-size: 30px;
+        margin-top: 15px;
+        margin-right: 55px;
+    }
 }
 
 .home-header-container {

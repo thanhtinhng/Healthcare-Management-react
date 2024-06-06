@@ -3,25 +3,31 @@ import { connect } from 'react-redux';
 import './HomeHeader.scss';
 import '../../assets/themify-icons/themify-icons.css'
 import { withRouter } from 'react-router-dom';
+import * as actions from "../../store/actions";
 
 class HomeHeader extends Component {
 
-    handleClick = () => {
+    handleClickDepartment = () => {
         this.props.history.push('/department');
     }
 
+    handleClickHome = () => {
+        this.props.history.push('/home')
+    }
+
     render() {
+
         return (
-            <React.Fragment>            
+            <React.Fragment>        
             <div className='home-header-container'>
                 <div className='home-header-content'>
                     <div className='left-content'>
                         <i className="fa fa-bars"></i>
-                        <div className='header-logo'></div>
+                        <div className='header-logo' onClick={() => {this.handleClickHome()}}></div>
                     </div>
 
                     <div className='center-content'>
-                        <div className='child-content' onClick={() => {this.handleClick()}}>
+                        <div className='child-content' onClick={() => {this.handleClickDepartment()}}>
                             <div><b>Chuyên khoa</b></div>
                             <div className='sub-title'>Tìm bác sĩ theo chuyên khoa</div>
                         </div>
@@ -50,45 +56,46 @@ class HomeHeader extends Component {
                     </div>
                 </div>
             </div>
-
-            <div className='home-header-banner'>
-                <div className='content-up'>
-                    <div className='tittle1'>NỀN TẢNG Y TẾ</div>
-                    <div className='tittle2'>CHĂM SÓC SỨC KHỎE TOÀN DIỆN</div>
-                    <div className='search'>
-                        <i className="search-icon ti-search"></i>
-                        <input type='text' placeholder='Tìm bác sĩ theo chuyên khoa'></input>
-                    </div>
-                </div>
-                <div className='content-down'>
-                    <div className='option'>
-                        <div className='option-child' onClick={() => {this.handleClick()}}>
-                            <div className='icon-child'><i className='far fa-hospital'></i></div>
-                            <div className='text-child'>Khám chuyên khoa</div>
-                        </div>
-
-                        <div className='option-child'>
-                            <div className='icon-child'><i className='ti-mobile'></i></div>
-                            <div className='text-child'>Khám từ xa</div>
-                        </div>
-
-                        <div className='option-child'>
-                            <div className='icon-child'><i className='ti-agenda'></i></div>
-                            <div className='text-child'>Khám tổng quát</div>
-                        </div>
-
-                        <div className='option-child'>
-                            <div className='icon-child'><i className='fas fa-vial'></i></div>
-                            <div className='text-child'>Xét nghiệm y học</div>
-                        </div>
-
-                        <div className='option-child'>
-                            <div className='icon-child'><i className='ti-face-smile'></i></div>
-                            <div className='text-child'>Sức khỏe tinh thần</div>
+            {this.props.isShowBanner === true &&
+                <div className='home-header-banner'>
+                    <div className='content-up'>
+                        <div className='tittle1'>NỀN TẢNG Y TẾ</div>
+                        <div className='tittle2'>CHĂM SÓC SỨC KHỎE TOÀN DIỆN</div>
+                        <div className='search'>
+                            <i className="search-icon ti-search"></i>
+                            <input type='text' placeholder='Tìm bác sĩ theo chuyên khoa'></input>
                         </div>
                     </div>
+                    <div className='content-down'>
+                        <div className='option'>
+                            <div className='option-child' onClick={() => {this.handleClickDepartment()}}>
+                                <div className='icon-child'><i className='far fa-hospital'></i></div>
+                                <div className='text-child'>Khám chuyên khoa</div>
+                            </div>
+
+                            <div className='option-child'>
+                                <div className='icon-child'><i className='ti-mobile'></i></div>
+                                <div className='text-child'>Khám từ xa</div>
+                            </div>
+
+                            <div className='option-child'>
+                                <div className='icon-child'><i className='ti-agenda'></i></div>
+                                <div className='text-child'>Khám tổng quát</div>
+                            </div>
+
+                            <div className='option-child'>
+                                <div className='icon-child'><i className='fas fa-vial'></i></div>
+                                <div className='text-child'>Xét nghiệm y học</div>
+                            </div>
+
+                            <div className='option-child'>
+                                <div className='icon-child'><i className='ti-face-smile'></i></div>
+                                <div className='text-child'>Sức khỏe tinh thần</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            }
             </React.Fragment>
         );
     }
@@ -103,6 +110,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        
     };
 };
 

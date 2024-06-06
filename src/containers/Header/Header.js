@@ -26,7 +26,6 @@ class Header extends Component {
             // <div></div>
         );
     }
-
 }
 
 const mapStateToProps = state => {

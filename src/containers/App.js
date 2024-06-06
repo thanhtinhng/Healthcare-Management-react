@@ -18,6 +18,7 @@ import System from '../routes/System';
 import { CustomToastCloseButton } from '../components/CustomToast';
 import HomePage from './HomePage/HomePage.js'
 import Department from './Department/Department.js';
+import DoctorListByDepartment from './Department/DoctorListByDepartment/DoctorListByDepartment.js';
 
 
 
@@ -53,10 +54,11 @@ class App extends Component {
                             <Switch>
                                 <Route path={path.HOME} exact component={(Home)} />
                                 <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
-                                {/* <Route path={path.SYSTEM} component={userIsAuthenticated(System)} /> */}
-                                <Route path={path.SYSTEM} component={userIsAuthenticated(HomePage)} />
+                                <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
+                                {/* <Route path={path.SYSTEM} component={userIsAuthenticated(HomePage)} /> */}
                                 <Route path={path.HOMEPAGE} component={HomePage} />
                                 <Route path={path.DEPARTMENT} component={Department} />
+                                <Route path="/department/:id" component={DoctorListByDepartment}/>
                             </Switch>
                         </span>
 

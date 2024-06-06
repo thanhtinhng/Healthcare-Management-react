@@ -1,0 +1,55 @@
+html, body {
+    overflow: auto;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.department-container {
+    margin: auto;
+    padding: 5px 15px 15px;
+
+    .navigation {
+        display: flex;
+        width: 1200px;
+        margin: 0 auto;
+        font-size: 16px;
+        .ti-home {
+            margin-right: 3px;
+            color: #45c3d2;
+            font-weight: bold;
+        }
+    }
+
+    .department-option {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        margin: 0 auto;
+        width: 1200px;
+        padding-left: 30px;
+    
+        .department-child {
+            margin: 20px 15px;
+            width: 30%;
+            display: block;
+            cursor: pointer;
+
+            &:hover {
+                color:#45c3d2;
+            }
+
+            img {
+                width: 100%;
+            }
+
+            .department-name {
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+
+
+
