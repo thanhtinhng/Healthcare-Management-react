@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import './HomeHeader.scss';
 import '../../assets/themify-icons/themify-icons.css'
 import { withRouter } from 'react-router-dom';
-import * as actions from "../../store/actions";
 
 class HomeHeader extends Component {
 

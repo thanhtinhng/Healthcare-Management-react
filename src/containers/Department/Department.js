@@ -4,12 +4,13 @@ import './Department.scss';
 import '../../assets/themify-icons/themify-icons.css'
 import HomeHeader from '../HomePage/HomeHeader';
 import images from './ImageDepartment';
+import { withRouter } from 'react-router-dom';
 
 
 class Department extends Component {
 
     handleViewListDoctor = (index) => {
-        console.log('hello', index)
+        this.props.history.push(`/doctor-list/${index}`);    
     }
 
     render() {
@@ -104,4 +105,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Department);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Department));

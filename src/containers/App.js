@@ -58,7 +58,7 @@ class App extends Component {
                                 {/* <Route path={path.SYSTEM} component={userIsAuthenticated(HomePage)} /> */}
                                 <Route path={path.HOMEPAGE} component={HomePage} />
                                 <Route path={path.DEPARTMENT} component={Department} />
-                                <Route path="/department/:id" component={DoctorListByDepartment}/>
+                                <Route path={path.DOCTOR_LIST} component={DoctorListByDepartment}/>
                             </Switch>
                         </span>
 
