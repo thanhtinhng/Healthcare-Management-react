@@ -9,7 +9,7 @@ class DoctorListByDepartment extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // arrDoctorId: [1, 2]
+            arrDoctor: '',
         }
     }
 
@@ -18,10 +18,17 @@ class DoctorListByDepartment extends Component {
         console.log('test api', res, id)
     }
 
-    componentDidMount() {
-        // if (this.props.match && this.props.match.params && this.props.match.params.id) {
+    getDoctorArray = async (id) => {
+        let arr = await getDoctorByDepartment(id)
+        this.setState({
+            arrDoctor: arr.doctors,
+        })
+    }
 
-        // }
+    componentDidMount() {
+        if (this.props.match && this.props.match.params && this.props.match.params.id) {
+            this.getDoctorArray(this.props.match.params.id)
+        }
         this.props.loadDoctorByDepartment()
     }
 
@@ -43,15 +50,15 @@ class DoctorListByDepartment extends Component {
         //         content = <div>Nội dung mặc định</div>;
         // }
 
-        console.log(this.props.match.params.id)
         //console.log(this.props.doctorByDepartmentRedux)
+        console.log(this.state.arrDoctor)
 
         return (
             <div>
                 <HomeHeader isShowBanner={false}/>
                 <div onClick={() => this.testapi(this.props.match.params.id)}>hello</div>
                 {/* {content} */}
-                {/* {arrDoctorId && arrDoctorId.length > 0 &&
+                {/* {arrDoctor && arrDoctor.length > 0 &&
                     return (
 
                     )
