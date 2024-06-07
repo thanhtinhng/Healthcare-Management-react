@@ -1,17 +1,12 @@
-html, body {
-    overflow: auto;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
 .department-container {
     margin: auto;
     padding: 5px 15px 15px;
+    background-color: #f7f7f7;
 
     .navigation {
         display: flex;
         width: 1200px;
+        padding-top: 10px;
         margin: 0 auto;
         font-size: 16px;
         .ti-home {
@@ -34,13 +29,17 @@ html, body {
             width: 30%;
             display: block;
             cursor: pointer;
-
+            transition: transform 0.3s ease;
+            
             &:hover {
                 color:#45c3d2;
+                transform: translateY(-5px);
             }
 
             img {
                 width: 100%;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                border-radius: 10px;
             }
 
             .department-name {

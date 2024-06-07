@@ -8,4 +8,8 @@ const getDoctorByDepartment = (departmentId) => {
     return axios.get(`/api/doctor-by-department?departmentId=${departmentId}`)
 }
 
-export { handleLoginApi, getDoctorByDepartment }
+const getDoctorById = (doctorId) => {
+    return axios.get(`/api/doctor-by-id?doctorId=${doctorId}`)
+}
+
+export { handleLoginApi, getDoctorByDepartment, getDoctorById }

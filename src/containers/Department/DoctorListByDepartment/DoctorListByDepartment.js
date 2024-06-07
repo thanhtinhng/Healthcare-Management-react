@@ -1,23 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import HomeHeader from '../../HomePage/HomeHeader';
-import * as actions from '../../../store/actions'
 import { getDoctorByDepartment } from '../../../services/userService';
+import './DoctorListByDepartment.scss';
+import images from './ImageDoctor';
+import { withRouter } from 'react-router-dom';
 
 class DoctorListByDepartment extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            arrDoctor: '',
+            arrDoctor: [],
+            }
         }
-    }
-
-    testapi = async (id) => {
-        let res = await getDoctorByDepartment(id)
-        console.log('test api', res, id)
-    }
-
+            
     getDoctorArray = async (id) => {
         let arr = await getDoctorByDepartment(id)
         this.setState({
@@ -25,44 +22,112 @@ class DoctorListByDepartment extends Component {
         })
     }
 
-    componentDidMount() {
-        if (this.props.match && this.props.match.params && this.props.match.params.id) {
-            this.getDoctorArray(this.props.match.params.id)
+    handleViewDoctor = (id) => {
+        this.props.history.push(`/doctor/${id}`)
+    }
+
+    getDepartmentName = () => {
+        let departmentName = ''
+        switch (this.props.match.params.id) {
+            case 'TMH':
+                departmentName = 'Tai Mũi Họng'
+                return departmentName
+            case 'TH':
+                departmentName = 'Tiêu hóa'
+                return departmentName
+            case 'TM':
+                departmentName = 'Tim mạch'
+                return departmentName
+            case 'CXK':
+                departmentName = 'Cơ Xương Khớp'
+                return departmentName
+            case 'NTK':
+                departmentName = 'Thần kinh'
+                return departmentName
+                
+            case 'PS':
+                departmentName = 'Phụ sản'
+                return departmentName
+                
+            case 'DL':
+                departmentName = 'Da liễu'
+                return departmentName
+                
+            case 'N':
+                departmentName = 'Nhi'
+                return departmentName
+                
+            case 'DU':
+                departmentName = 'Dị ứng miễn dịch'
+                return departmentName
+                
+            case 'M':
+                departmentName = 'Mắt'
+                return departmentName
+                
+            case 'T':
+                departmentName = 'Thận tiết niệu'
+                return departmentName
+                
+            case 'NHA':
+                departmentName = 'Nha khoa'
+                return departmentName
+                
+            case 'YHCT':
+                departmentName = 'Y học cổ truyền'
+                return departmentName
+                
         }
-        this.props.loadDoctorByDepartment()
+    }
+
+    async componentDidMount() {
+        if (this.props.match && this.props.match.params && this.props.match.params.id) {
+            await this.getDoctorArray(this.props.match.params.id)
+        }
+        
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
 
     }
 
-    
-    render() {
-        // let content;
-        // switch(this.props.match.params.id) {
-        //     case '1':
-        //         content = <div>Nội dung cho department 1</div>;
-        //         break;
-        //     case '2':
-        //         content = <div>Nội dung cho department 2</div>;
-        //         break;
-        //     default:
-        //         content = <div>Nội dung mặc định</div>;
-        // }
 
-        //console.log(this.props.doctorByDepartmentRedux)
-        console.log(this.state.arrDoctor)
+    render() {
+    
+        const { arrDoctor } = this.state;
 
         return (
             <div>
                 <HomeHeader isShowBanner={false}/>
-                <div onClick={() => this.testapi(this.props.match.params.id)}>hello</div>
-                {/* {content} */}
-                {/* {arrDoctor && arrDoctor.length > 0 &&
-                    return (
-
-                    )
-                } */}
+                <div className='background'>
+                    <div className='department-name'>Chuyên khoa {this.getDepartmentName()}</div>
+                    <div className="doctor-list-container">
+                        {arrDoctor && arrDoctor.length > 0 ? (
+                            arrDoctor.map((doctor) => (
+                                <div key={doctor.DoctorID} className="doctor-card" onClick={() => this.handleViewDoctor(doctor.DoctorID)}>
+                                    {images[doctor.DoctorID] ? (
+                                        <div className="doctor-image">
+                                            <img src={images[doctor.DoctorID]} alt={doctor.DoctorName} />
+                                        </div>
+                                        ) : (
+                                        <div className="doctor-image">
+                                            <img src={images[0]} alt={doctor.DoctorName} />
+                                        </div>
+                                        )
+                                    }
+                                    <div className="doctor-info">
+                                        <h2 className="doctor-name">{doctor.DoctorName}</h2>
+                                        <p><strong>Chuyên môn:</strong> {doctor.Specialization}</p>
+                                        <p><strong>Điện thoại:</strong> {doctor.DoctorPhone}</p>
+                                        <p><strong>Email:</strong> {doctor.DoctorEmail}</p>
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
+                            <p className="no-doctors">No doctors available.</p>
+                        )}
+                    </div>
+                </div>
             </div>
         );
     }
@@ -70,14 +135,14 @@ class DoctorListByDepartment extends Component {
 
 const mapStateToProps = state => {
     return {
-        //doctorByDepartmentRedux: state.admin.doctorByDepartment
+        
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        loadDoctorByDepartment: () => dispatch(actions.fetchDoctorByDepartment())
+        
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DoctorListByDepartment);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(DoctorListByDepartment));

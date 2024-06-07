@@ -1,0 +1,113 @@
+.doctor-container {
+    display: flex;
+    padding: 20px;
+    background-color: #f9f9f9;
+    min-height: fit-content;
+
+    .doctor-avatar {
+        margin-right: 20px;
+        width: 30%;
+        
+        .doctor-image {
+            img {
+                min-width: 100%;
+                max-width: 100%;
+                // border-radius: 50%;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+        }
+    }
+
+    .doctor-detail {
+        flex: 1;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        box-sizing: border-box;
+
+        .doctor-info {
+            margin-bottom: 20px;
+
+            .doctor-name {
+                font-size: 2em;
+                margin-bottom: 10px;
+                color: #333;
+            }
+
+            p {
+                margin: 5px 0;
+                color: #555;
+
+                strong {
+                    color: #333;
+                }
+            }
+        }
+
+        .appointment {
+            label {
+                padding-bottom: 10px;
+                input {
+                    height: 30px;
+                    width: 150px;
+                    font-size: 18px;
+                }
+            }
+
+            .appointment-times {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 20px;
+                padding-top: 10px;
+
+                .time-slot {
+                    width: 123px;
+                    align-self: flex-start;
+                    padding: 10px 20px;
+                    font-size: 1em;
+                    text-align: center;
+                    color: #fff;
+                    background-color: #007bff;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+
+                    &:hover {
+                        background-color: #0056b3;
+                    }
+                }
+            }
+
+            .appoint-btn {
+                float: right;
+                margin-right: 40px;
+                width: 123px;
+                padding: 10px 20px;
+                font-size: 1em;
+                text-align: center;
+                color: #fff;
+                background-color: #ffae00;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+
+                &:hover {
+                    background-color: #b37d00;
+                }
+            }
+        }
+
+    }
+
+}
+
+.no-doctors {
+    font-size: 1.2em;
+    color: #999;
+    text-align: center;
+    background: #f7f7f7;
+}

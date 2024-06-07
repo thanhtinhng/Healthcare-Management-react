@@ -19,8 +19,7 @@ import { CustomToastCloseButton } from '../components/CustomToast';
 import HomePage from './HomePage/HomePage.js'
 import Department from './Department/Department.js';
 import DoctorListByDepartment from './Department/DoctorListByDepartment/DoctorListByDepartment.js';
-
-
+import Doctor from './Doctor/Doctor.js';
 
 class App extends Component {
 
@@ -59,6 +58,7 @@ class App extends Component {
                                 <Route path={path.HOMEPAGE} component={HomePage} />
                                 <Route path={path.DEPARTMENT} component={Department} />
                                 <Route path={path.DOCTOR_LIST} component={DoctorListByDepartment}/>
+                                <Route path={path.DOCTOR} component={Doctor} />
                             </Switch>
                         </span>
 
