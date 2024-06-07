@@ -49,7 +49,7 @@ class DoctorListByDepartment extends Component {
         return (
             <div>
                 <HomeHeader isShowBanner={false}/>
-                <div onClick={() => this.testapi('D')}>hello</div>
+                <div onClick={() => this.testapi(this.props.match.params.id)}>hello</div>
                 {/* {content} */}
                 {/* {arrDoctorId && arrDoctorId.length > 0 &&
                     return (
