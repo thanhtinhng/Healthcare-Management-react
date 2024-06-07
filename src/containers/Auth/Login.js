@@ -11,6 +11,7 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
+          user: '',
           username: '',
           password: '',
           errMessage: '',
@@ -41,8 +42,13 @@ class Login extends Component {
           })
         }
         if (data && data.errCode === 0) {
+          this.setState ({
+            user: data.user
+          })
+          localStorage.setItem('user', JSON.stringify(data.user))
           this.props.userLoginSuccess(data.user)
         }
+        console.log(this.state.user)
       } catch (error) {
         if (error.response){
           if (error.response.data){
