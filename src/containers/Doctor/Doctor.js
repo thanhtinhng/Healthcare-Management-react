@@ -15,6 +15,8 @@ class Doctor extends Component {
             user: '',
             selectedTime: '',
             selectedDate:'',
+            errMessage: '',
+            errCode:''
         }
     }
 
@@ -89,10 +91,39 @@ class Doctor extends Component {
     };
 
     handleAppoint = async () => {
+        this.setState({
+            errMessage: '',
+            errCode: ''
+        })
         let userId = this.state.user.PatientID
         let doctorId = this.state.doctor.DoctorID
-        let dateTime = this.state.selectedDate + ' ' + this.state.selectedTime
-        await postAppointment(dateTime, doctorId, userId)
+        let date = this.state.selectedDate
+        let time = this.state.selectedTime
+        try {
+            let data = await postAppointment(date, time, doctorId, userId)
+            if (data && data.errCode !== 0) {
+                this.setState({
+                    errMessage: data.message,
+                    errCode: data.errCode
+                })
+            }
+            else if (data && data.errCode === 0) {
+                this.setState({
+                    errMessage: 'Đặt lịch thành công!',
+                    errCode: data.errCode
+                })
+            }
+        } catch (error) {
+            if (error.response) {
+                if (error.response.data) {
+                    this.setState ({
+                        errMessage: error.response.data.message,
+                        errCode: error.response.data.errCode
+                    })
+                }
+            }
+        }
+
     }
 
     async componentDidMount() {
@@ -109,7 +140,7 @@ class Doctor extends Component {
     }
     
     testState() {
-        console.log(this.state.selectedDate, this.state.selectedTime, this.state.user)
+        console.log(this.state.selectedDate, this.state.selectedTime, this.state.user, this.state.errMessage)
     }
 
     render() {
@@ -178,6 +209,12 @@ class Doctor extends Component {
                                             </div>
                                         ))}
                                     </div>
+                                    {this.state.errCode === 0 ? (
+                                        <div className='col-12 mb-4' style={{color: 'green'}}>{this.state.errMessage}</div>
+                                    ) : (
+                                        <div className='col-12 mb-4' style={{color: 'red'}}>{this.state.errMessage}</div>
+                                    )}
+                                    {/* <div className='col-12 mb-4' style={{color: 'red'}}>{this.state.errMessage}</div> */}
                                     <div className='appoint-btn' onClick={() => this.handleAppoint()}>Đặt lịch</div>
                                 </div>
                             </div>

@@ -12,8 +12,8 @@ const getDoctorById = (doctorId) => {
     return axios.get(`/api/doctor-by-id?doctorId=${doctorId}`)
 }
 
-const postAppointment = (dateTime, doctorId, userId) => {
-    return axios.post('/api/appointment', {dateTime: dateTime, doctorId: doctorId, userId: userId})
+const postAppointment = (date, time, doctorId, userId) => {
+    return axios.post('/api/appointment', {date: date, time: time, doctorId: doctorId, userId: userId})
 }
 
 export { handleLoginApi, getDoctorByDepartment, getDoctorById, postAppointment }

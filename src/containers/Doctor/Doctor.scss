@@ -1,7 +1,7 @@
 .doctor-container {
     background-color: #f9f9f9;
     .thong-tin-bac-si {
-        padding-top: 18px;
+        padding-top: 10px;
         margin-bottom: -13px;
         margin-left: 19px;
     }
@@ -31,6 +31,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 20px;
             box-sizing: border-box;
+            position: relative;
     
             .doctor-info {
                 margin-bottom: 20px;
@@ -109,6 +110,15 @@
                         background-color: #b37d00;
                     }
                 }
+            }
+
+            .col-12.mb-4 {
+                position: absolute;
+                z-index: 1;
+                margin-top: 20px;
+                margin-left: 10px;
+                font-size: 16px;
+                width: fit-content;
             }
     
         }
