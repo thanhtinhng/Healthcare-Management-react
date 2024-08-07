@@ -78,21 +78,21 @@ class Login extends Component {
                   {/* <form action="" method="" id="registerForm"> */}
 
                     <div data-mdb-input-init className="form-outline mb-4">
+                      <label className="form-label" htmlFor="email">Email<span className="required"> *</span></label>
                       <input 
                         type="email" id="email" name="email" className="form-control form-control-lg" required
                         value={this.state.username}
                         onChange={(event) => this.handdleOnChangeUsername(event)}
                       />
-                      <label className="form-label" htmlFor="email">Email<span className="required"> *</span></label>
                     </div>
 
                     <div data-mdb-input-init className="form-outline">
+                      <label className="form-label" htmlFor="password">Mật khẩu<span className="required"> *</span></label>
                       <input 
                         type="password" id="password" name="password" className="form-control form-control-lg" required
                         value = {this.state.password}
                         onChange={(event) => this.handleOnchangePassword(event)}
                       />
-                      <label className="form-label" htmlFor="password">Mật khẩu<span className="required"> *</span></label>
                     </div>
 
                     <div className='col-12 mb-4' style={{color: 'red'}}>{this.state.errMessage}</div>
